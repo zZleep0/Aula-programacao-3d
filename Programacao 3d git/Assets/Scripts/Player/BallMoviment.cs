@@ -56,20 +56,23 @@ public class BallMoviment : MonoBehaviour
         #endregion
 
         #region 2° forma de aplicar o movimento
-        //fisica.AddForce(new Vector3 (movX, 0, movZ) * Time.deltaTime * velocidadeBola);
+        //fisica.AddForce(new Vector3(movX, 0, movZ) * Time.deltaTime * velocidadeBola);
         #endregion
 
         #region 3° forma de aplicar o movimento
         //fisica .velocity = (new Vector3(movX, 0, movZ) * Time.deltaTime * velocidadeBola);
         #endregion
 
+        #region Pulo da bolinha
         //pulo da bolinha
         if (Input.GetKeyDown(teclaPulo) && estaNoChao)
         {
             fisica.AddForce(new Vector3 (0, 1, 0) * forcaPulo, ForceMode.Impulse);
         }
+        #endregion
     }
 
+    #region Colisoes
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.name == "chao")
@@ -80,5 +83,5 @@ public class BallMoviment : MonoBehaviour
         if (collision.collider.name == "chao")
             estaNoChao = false;
     }
-
+    #endregion
 }
