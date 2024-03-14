@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class ItemTPController : MonoBehaviour
 {
-    public GameObject localTP;
+    //public CenaController control;
+
     public Vector3 posicaoTP;
     public Vector3 positaoatual;
 
@@ -27,6 +28,7 @@ public class ItemTPController : MonoBehaviour
     {
         if (collision.collider.name == "pelota")
         {
+            //control.quantidadeItens++;
             if (transform.position == posicaoTP)
             {
                 Destroy(gameObject);
