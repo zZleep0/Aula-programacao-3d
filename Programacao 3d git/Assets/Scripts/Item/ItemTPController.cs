@@ -26,7 +26,7 @@ public class ItemTPController : MonoBehaviour
         if (collision.collider.name == "pelota")
         {
 
-            Destroy(gameObject);
+            
         }
     }
 }
