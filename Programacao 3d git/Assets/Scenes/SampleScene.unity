@@ -796,8 +796,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721b6860c1448a443a33548275345569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localTP: {fileID: 0}
-  posicaoTP: {x: 0, y: 0, z: 0}
+  localTP: {fileID: 23830254}
+  posicaoTP: {x: -13.17, y: 0.93, z: 23.05}
   movItemTP: {x: 0, y: 5, z: 2}
 --- !u!1001 &919201949
 PrefabInstance:
@@ -1357,6 +1357,8 @@ MonoBehaviour:
   paraEsquerda: 97
   paraDireita: 100
   teclaPulo: 32
+  tempospeed: 0
+  boost: 0
 --- !u!1 &1319403334
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,7 +1538,7 @@ GameObject:
   - component: {fileID: 1768879270}
   m_Layer: 0
   m_Name: ItemEspecial
-  m_TagString: Untagged
+  m_TagString: itemEspecial
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1641,8 +1643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c07aa6141018717419176189ea94af39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movItemEspecial: {x: 2, y: 4, z: 0}
-  ballmov: {fileID: 1317436941}
+  movItemEspecial: {x: 0, y: 0, z: 0}
 --- !u!1 &2097946437
 GameObject:
   m_ObjectHideFlags: 0
