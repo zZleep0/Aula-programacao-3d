@@ -6,6 +6,8 @@ TagManager:
   tags:
   - chao
   - limite
+  - Fire
+  - itemEspecial
   layers:
   - Default
   - TransparentFX

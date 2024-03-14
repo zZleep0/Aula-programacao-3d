@@ -22,6 +22,9 @@ public class BallMoviment : MonoBehaviour
     [SerializeField] private KeyCode paraDireita;
     [SerializeField] private KeyCode teclaPulo;
 
+    public int tempospeed = 3;
+    public bool boost;
+
 
     // Start is called before the first frame update
     void Start()
@@ -86,11 +89,27 @@ public class BallMoviment : MonoBehaviour
             transform.position = posicaoInicial;
 
 
+        if (collision.collider.tag == "itemEspecial")
+        {
+            velocidadeBola = velocidadeBola * 2;
+            Invoke("Desligarvelocidade", tempospeed);
+            boost = true;
+        }
     }
+
     private void OnCollisionExit(Collision collision)
     {
         if (collision.collider.tag == "chao")
             estaNoChao = false;
     }
     #endregion
+
+    private void Desligarvelocidade()
+    {
+        if (boost)
+        {
+            velocidadeBola = velocidadeBola / 2;
+            boost = false;
+        }
+    }
 }
