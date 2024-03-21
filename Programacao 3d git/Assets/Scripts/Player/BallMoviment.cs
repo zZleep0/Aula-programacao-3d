@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class BallMoviment : MonoBehaviour
 {
@@ -22,8 +23,8 @@ public class BallMoviment : MonoBehaviour
     [SerializeField] private KeyCode paraDireita;
     [SerializeField] private KeyCode teclaPulo;
 
-    public int tempospeed = 3;
-    public bool boost;
+    public SuperPulo SuperPulo;
+    
 
 
     // Start is called before the first frame update
@@ -72,10 +73,20 @@ public class BallMoviment : MonoBehaviour
         //pulo da bolinha
         if (Input.GetKeyDown(teclaPulo) && estaNoChao)
         {
-            fisica.AddForce(new Vector3 (0, 1, 0) * forcaPulo, ForceMode.Impulse);
+            if (SuperPulo.usarSuperPulo)
+            {
+                fisica.AddForce(new Vector3(0, 1, 0) *
+                forcaPulo * 2, ForceMode.Impulse);
+            }
+            else
+            {
+                fisica.AddForce(new Vector3(0, 1, 0) *
+                forcaPulo, ForceMode.Impulse);
+            }
         }
         #endregion
 
+        
         
     }
 
@@ -89,12 +100,7 @@ public class BallMoviment : MonoBehaviour
             transform.position = posicaoInicial;
 
 
-        if (collision.collider.tag == "itemEspecial")
-        {
-            velocidadeBola = velocidadeBola * 2;
-            Invoke("Desligarvelocidade", tempospeed);
-            boost = true;
-        }
+        
     }
 
     private void OnCollisionExit(Collision collision)
@@ -104,12 +110,4 @@ public class BallMoviment : MonoBehaviour
     }
     #endregion
 
-    private void Desligarvelocidade()
-    {
-        if (boost)
-        {
-            velocidadeBola = velocidadeBola / 2;
-            boost = false;
-        }
-    }
 }
