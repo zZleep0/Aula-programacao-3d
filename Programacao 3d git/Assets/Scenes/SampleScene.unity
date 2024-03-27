@@ -1185,6 +1185,7 @@ GameObject:
   - component: {fileID: 1317436936}
   - component: {fileID: 1317436940}
   - component: {fileID: 1317436941}
+  - component: {fileID: 1317436942}
   m_Layer: 0
   m_Name: pelota
   m_TagString: Untagged
@@ -1326,8 +1327,21 @@ MonoBehaviour:
   paraEsquerda: 97
   paraDireita: 100
   teclaPulo: 32
-  tempospeed: 0
-  boost: 0
+  SuperPulo: {fileID: 1317436942}
+--- !u!114 &1317436942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317436935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85a5c52adb76f54b8113458e0d15bc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usarSuperPulo: 0
+  tempoBoostVelo: 0
 --- !u!1 &1319403334
 GameObject:
   m_ObjectHideFlags: 0
