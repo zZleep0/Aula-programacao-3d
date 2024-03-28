@@ -8,6 +8,8 @@ TagManager:
   - limite
   - Fire
   - itemEspecial
+  - inimigo
+  - municao
   layers:
   - Default
   - TransparentFX

@@ -20,4 +20,12 @@ public class balaController : MonoBehaviour
     {
         
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("inimigo"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
