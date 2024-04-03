@@ -10,6 +10,8 @@ TagManager:
   - itemEspecial
   - inimigo
   - municao
+  - pistola
+  - Bala
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Terreno
   - 
   - 
   - 
