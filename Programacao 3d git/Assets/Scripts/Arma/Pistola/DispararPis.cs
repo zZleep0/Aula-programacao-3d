@@ -6,7 +6,7 @@ public class DispararPis : MonoBehaviour
 {
     [SerializeField] public GameObject canoArma;
     [SerializeField] public GameObject bala;
-    private int limiteBala = 20;
+    public int limiteBala = 20;
 
     // Start is called before the first frame update
     void Start()

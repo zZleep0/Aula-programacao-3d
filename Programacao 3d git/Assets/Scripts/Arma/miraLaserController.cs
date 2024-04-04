@@ -11,6 +11,11 @@ public class miraLaserController : MonoBehaviour
     [SerializeField] private KeyCode habilitarLaser;
     private bool laserHabilitado = false;
 
+    [Header("Mira Luneta")]
+    [SerializeField] private GameObject cameraLuneta;
+    [SerializeField] private KeyCode habilitarLuneta;
+    private bool lunetaHabilitada = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +25,7 @@ public class miraLaserController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        #region Laser
         lineMira.SetPosition(0, laser.transform.position);
         lineMira.SetPosition(1, laser.transform.forward * distancia);
 
@@ -33,5 +39,19 @@ public class miraLaserController : MonoBehaviour
         }
         else
             laser.SetActive(false);
+        #endregion
+
+        #region Luneta
+        if (Input.GetKeyDown (habilitarLuneta))
+        {
+            lunetaHabilitada = !lunetaHabilitada;
+        }
+        if (lunetaHabilitada)
+        {
+            cameraLuneta.SetActive(true);
+        }
+        else
+            cameraLuneta.SetActive(false);
+        #endregion
     }
 }
