@@ -12,6 +12,7 @@ TagManager:
   - municao
   - pistola
   - Bala
+  - Combustivel
   layers:
   - Default
   - TransparentFX
