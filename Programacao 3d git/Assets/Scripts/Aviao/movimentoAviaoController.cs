@@ -21,7 +21,7 @@ public class movimentoAviaoController : MonoBehaviour
     
     [SerializeField] private float velocidade = 0;
 
-    private bool ligado = false;
+    public bool ligado = false;
 
     [Header("Interacoes")]
     private int qtdeComb;
