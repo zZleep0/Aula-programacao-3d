@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class movimentoAviaoController : MonoBehaviour
 {
@@ -23,14 +24,18 @@ public class movimentoAviaoController : MonoBehaviour
 
     public bool ligado = false;
 
-    [Header("Interacoes")]
-    private int qtdeComb;
-    private float tempo;
+    [Header("Atividade")]
+    [SerializeField] private int qtdeComb;
+    [SerializeField] private float tempo;
+    [SerializeField] private GameObject canvasAviao;
+    [SerializeField] private Rigidbody rgAviao;
+    [SerializeField] private Text tempotxt;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rgAviao = GetComponent<Rigidbody>();
+        canvasAviao.SetActive(false);
     }
 
     // Update is called once per frame
@@ -38,9 +43,31 @@ public class movimentoAviaoController : MonoBehaviour
     {
         if (ligado)
         {
+            canvasAviao.SetActive(true);
+            
+
             GiroDaHelice();
             Movimento();
+
+            if (qtdeComb < 5)
+            {
+                tempo += Time.deltaTime;
+            }
         }
+
+        
+        if (tempo < 0)
+        {
+            tempo = 0;
+        }
+        if (tempo == 30)
+        {
+            rgAviao.useGravity = true;
+        }
+
+        tempotxt.text = tempo.ToString();
+
+
     }
 
     public void Movimento()
@@ -97,6 +124,7 @@ public class movimentoAviaoController : MonoBehaviour
         transform.Translate(new Vector3 (0, -1, 0) * velocidade); //ou Vector.down
         transform.Rotate(movX, movY, movZ);
 
+        
     }
 
     public void GiroDaHelice()
@@ -118,6 +146,7 @@ public class movimentoAviaoController : MonoBehaviour
         if (other.gameObject.CompareTag("Combustivel"))
         {
             qtdeComb++;
+            tempo -= 60;
             
             Destroy(other.gameObject);
         }
