@@ -34,7 +34,7 @@ public class movimentoAviaoController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rgAviao = GetComponent<Rigidbody>();
+        rgAviao = GameObject.Find("Aviao").GetComponent<Rigidbody>();
         canvasAviao.SetActive(false);
     }
 
@@ -60,7 +60,7 @@ public class movimentoAviaoController : MonoBehaviour
         {
             tempo = 0;
         }
-        if (tempo == 30)
+        if (tempo >= 30)
         {
             rgAviao.useGravity = true;
         }

@@ -24,14 +24,21 @@ public class BallMoviment : MonoBehaviour
     [SerializeField] private KeyCode teclaPulo;
 
     public SuperPulo SuperPulo;
-    
+
+    [Header("Controle de sons")]
+    [SerializeField] private AudioClip somDePulo;
+    [SerializeField] private AudioClip somDeMorte;
+    [SerializeField] private AudioClip somDeItem;
+    private AudioSource fonteDeSom;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        estaNoChao = false;
         fisica = GetComponent<Rigidbody>();
         posicaoInicial = transform.position;
+        fonteDeSom = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -73,6 +80,13 @@ public class BallMoviment : MonoBehaviour
         //pulo da bolinha
         if (Input.GetKeyDown(teclaPulo) && estaNoChao)
         {
+            if (!fonteDeSom.isPlaying)
+            {
+                fonteDeSom.clip = somDePulo;
+                fonteDeSom.Play();
+                //fonteDeSom.PlayOneShot(somDePulo); //tambem é uma opção
+            }
+
             if (SuperPulo.usarSuperPulo)
             {
                 fisica.AddForce(new Vector3(0, 1, 0) *
@@ -97,9 +111,20 @@ public class BallMoviment : MonoBehaviour
             estaNoChao = true;
 
         if (collision.collider.tag == "limite")
+        {
+            fonteDeSom.PlayOneShot(somDeMorte);
             transform.position = posicaoInicial;
+        }
 
-
+        if (collision.collider.tag == "tesouro")
+        {
+            if (!fonteDeSom.isPlaying)
+            {
+                fonteDeSom.clip = somDeItem;
+                fonteDeSom.Play();
+            }
+            
+        }
         
     }
 

@@ -13,6 +13,7 @@ TagManager:
   - pistola
   - Bala
   - Combustivel
+  - tesouro
   layers:
   - Default
   - TransparentFX
