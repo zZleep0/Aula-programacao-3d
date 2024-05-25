@@ -9,9 +9,15 @@ public class DispararRifle : MonoBehaviour
     public int municao;
     [SerializeField] public GameObject player;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip somDeTiro;
+    [SerializeField] private AudioClip somDeRecarregar;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GameObject.Find("Player").GetComponent<AudioSource>();
+
         municao = 50;
     }
 
@@ -20,12 +26,18 @@ public class DispararRifle : MonoBehaviour
     {
         if (municao > 0)
         {
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
             {
+                audioSource.PlayOneShot(somDeTiro);
                 var ba = Instantiate(bala, canoArma.transform.position, canoArma.transform.rotation);
                 Destroy(ba, 3f);
                 municao--;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            audioSource.PlayOneShot(somDeRecarregar);
+            municao = 20;
         }
     }
     

@@ -30,11 +30,13 @@ public class BallMoviment : MonoBehaviour
     [SerializeField] private AudioClip somDeMorte;
     [SerializeField] private AudioClip somDeItem;
     private AudioSource fonteDeSom;
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
+        
         estaNoChao = false;
         fisica = GetComponent<Rigidbody>();
         posicaoInicial = transform.position;
@@ -89,6 +91,8 @@ public class BallMoviment : MonoBehaviour
 
             if (SuperPulo.usarSuperPulo)
             {
+                
+
                 fisica.AddForce(new Vector3(0, 1, 0) *
                 forcaPulo * 2, ForceMode.Impulse);
             }

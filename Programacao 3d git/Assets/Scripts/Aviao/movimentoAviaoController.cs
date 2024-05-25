@@ -31,10 +31,18 @@ public class movimentoAviaoController : MonoBehaviour
     [SerializeField] private Rigidbody rgAviao;
     [SerializeField] private Text tempotxt;
 
+    [Header("Som")]
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip somMotor;
+    private AudioListener audioListener;
+
     // Start is called before the first frame update
     void Start()
     {
         rgAviao = GameObject.Find("Aviao").GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
+        audioListener = GetComponent<AudioListener>();
+        audioListener.enabled = false;
         canvasAviao.SetActive(false);
     }
 
@@ -44,7 +52,10 @@ public class movimentoAviaoController : MonoBehaviour
         if (ligado)
         {
             canvasAviao.SetActive(true);
-            
+
+            audioListener.enabled = true;
+            audioSource.clip = somMotor;
+            audioSource.Play();
 
             GiroDaHelice();
             Movimento();

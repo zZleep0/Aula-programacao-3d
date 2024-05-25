@@ -9,12 +9,15 @@ public class ItemTPController : MonoBehaviour
 
     public Vector3 posicaoTP;
     public Vector3 positaoatual;
-
     public Vector3 movItemTP;
+
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip somTP;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GameObject.Find("pelota").GetComponent<AudioSource>();
         positaoatual = transform.position;
     }
 
@@ -28,6 +31,8 @@ public class ItemTPController : MonoBehaviour
     {
         if (collision.collider.name == "pelota")
         {
+            audioSource.PlayOneShot(somTP);
+
             //control.quantidadeItens++;
             if (transform.position == posicaoTP)
             {
