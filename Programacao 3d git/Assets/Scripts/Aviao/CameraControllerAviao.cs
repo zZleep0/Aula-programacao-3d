@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CameraControllerAviao : MonoBehaviour
 {
+    [SerializeField] private Camera camMinimapa;
+    private bool ativaMinimapa;
+
     [SerializeField] private Camera camera1P;
     [SerializeField] private Camera camera3P;
     [SerializeField] private Camera cameraRetrovisor;
@@ -11,12 +14,13 @@ public class CameraControllerAviao : MonoBehaviour
 
     [SerializeField] private KeyCode trocaCamera;
     [SerializeField] private KeyCode espelho;
+    [SerializeField] private KeyCode minimapa;
     private bool primeiraPessoa;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -27,15 +31,19 @@ public class CameraControllerAviao : MonoBehaviour
             camera1P.enabled = true;
             camera3P.enabled = true;
             cameraRetrovisor.enabled = true;
+            camMinimapa.enabled = true;
         }
         else
         {
             camera1P.enabled = false;
             camera3P.enabled = false;
             cameraRetrovisor.enabled = false;
+            camMinimapa.enabled = false;
         }
+        Minimapa();
         TrocaDeCamera();
         HabilitaRetrovisor();
+        
     }
 
     private void TrocaDeCamera()
@@ -66,5 +74,22 @@ public class CameraControllerAviao : MonoBehaviour
         {
             cameraRetrovisor.depth = 0;
         }
+    }
+
+    private void Minimapa()
+    {
+        if (Input.GetKeyDown(minimapa))
+        {
+            ativaMinimapa = !ativaMinimapa;
+
+        }
+        if (ativaMinimapa)
+        {
+            camMinimapa.depth = 5;
+            Debug.Log("ativou minimapa");
+        }
+        else
+            camMinimapa.depth = 1;
+        
     }
 }
