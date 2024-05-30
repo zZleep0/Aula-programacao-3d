@@ -23,7 +23,7 @@ public class SuperPulo : MonoBehaviour
         if (usarSuperPulo)
         {
             audioCamera.clip = musicaSuper;
-            audioCamera.Play();
+            audioCamera.PlayOneShot(musicaSuper);
 
             tempoBoostVelo += Time.deltaTime;
 
@@ -33,11 +33,7 @@ public class SuperPulo : MonoBehaviour
                 tempoBoostVelo = 0;
             }
         }
-        //else
-        //{
-        //    audioCamera.clip = musicaAmbiente;
-        //    audioCamera.Play();
-        //}
+        
     }
 
     private void OnCollisionEnter(Collision other)
